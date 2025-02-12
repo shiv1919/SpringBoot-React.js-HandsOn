@@ -1,0 +1,71 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #695252;
+    min-height: 100vh;
+    color: white;
+  }
+  
+  .left-section, .right-section {
+    max-width: 45%;
+    padding: 20px;
+    background-color: #2d2d2d;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .error-message {
+    color: red;
+    margin: 10px 0;
+  }
+  
+  .fetch-button {
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #5fcd65;
+    color: rgb(6, 10, 12);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .fetch-button:disabled {
+    cursor: not-allowed;
+    background-color: #6c6c6c;
+  }
+  
+  .input-field {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #070505;
+  }
+  
+  table {
+    width: 100%;
+    color: rgb(0, 0, 0);
+    border-collapse: collapse;
+    background-color: #6c6c6c;
+  }
+  
+  thead tr {
+    border-bottom: 2px solid white;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid rgb(97, 76, 76);
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .record-details {
+    margin-top: 20px;
+  }
+  

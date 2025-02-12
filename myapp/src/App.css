@@ -1,0 +1,35 @@
+n.App {
+  text-align: right;
+  background-color: #1d5ee8;
+  color: rgb(12, 2, 2); 
+}
+
+body {
+  background-color: rgb(30, 69, 83);
+  margin: 0;
+  padding: 0;
+  color: rgba(247, 247, 247, 0.578);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  color: rgb(236, 40, 40);
+}
+
+.App-link {
+  color: #e1bb90; 
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
