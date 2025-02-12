@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Loginregister.css";  
 
 function LoginRegister() {
   const [isLogin, setIsLogin] = useState(true);
@@ -66,9 +65,22 @@ function LoginRegister() {
   };
   
   return (
-    <div className="login-register-container">
-      <div className="login-register-box">
-        <h2>{isLogin ? "Login" : "Register"}</h2>
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      backgroundColor: "#7ca0e9"
+    }}>
+      <div style={{
+        backgroundColor: "white",
+        padding: "2rem",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+        width: "400px",
+        textAlign: "center"
+      }}>
+        <h2 style={{ color: "black" }}>{isLogin ? "Login" : "Register"}</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
@@ -77,6 +89,13 @@ function LoginRegister() {
             value={formData.email}
             onChange={handleChange}
             required
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginBottom: "10px",
+              border: "1px solid #ccc",
+              borderRadius: "5px"
+            }}
           />
           <input
             type="password"
@@ -85,6 +104,13 @@ function LoginRegister() {
             value={formData.password}
             onChange={handleChange}
             required
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginBottom: "10px",
+              border: "1px solid #ccc",
+              borderRadius: "5px"
+            }}
           />
           {!isLogin && (
             <>
@@ -95,6 +121,13 @@ function LoginRegister() {
                 value={formData.firstName}
                 onChange={handleChange}
                 required
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  marginBottom: "10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px"
+                }}
               />
               <input
                 type="text"
@@ -103,15 +136,49 @@ function LoginRegister() {
                 value={formData.lastName}
                 onChange={handleChange}
                 required
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  marginBottom: "10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px"
+                }}
               />
             </>
           )}
-          <button type="submit">{isLogin ? "Login" : "Register"}</button>
+          <button type="submit" style={{
+            width: "100%",
+            backgroundColor: "#007bff",
+            color: "white",
+            padding: "10px",
+            border: "none",
+            borderRadius: "5px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            transition: "background-color 0.3s ease"
+          }}
+            onMouseOver={(e) => e.target.style.backgroundColor = "#0056b3"}
+            onMouseOut={(e) => e.target.style.backgroundColor = "#007bff"}
+          >
+            {isLogin ? "Login" : "Register"}
+          </button>
         </form>
-        <div className="toggle-form" onClick={toggleForm}>
+        <div style={{
+          marginTop: "10px",
+          color: "#007bff",
+          cursor: "pointer",
+          textDecoration: "underline"
+        }} onClick={toggleForm}>
           {isLogin ? "New user? Register here" : "Already have an account? Login"}
         </div>
-        <Link to="/" className="home-link">Back to Home</Link>
+        <Link to="/Home" style={{
+          marginTop: "15px",
+          display: "block",
+          color: "#555",
+          textDecoration: "underline"
+        }}>
+          Back to Home
+        </Link>
       </div>
     </div>
   );

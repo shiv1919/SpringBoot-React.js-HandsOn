@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./UpdatePage.css"; 
 
 function UpdatePage() {
   const [formData, setFormData] = useState({
@@ -47,16 +46,53 @@ function UpdatePage() {
   };
 
   return (
-    <div className="update-container">
-      <h2>Update Payment Record</h2>
-      <input type="text" name="id" placeholder="Enter ID" value={formData.id} onChange={handleChange} />
-      <input type="text" name="ledgerHeadId" placeholder="Ledger Head ID" value={formData.ledgerHeadId} onChange={handleChange} />
-      <input type="text" name="loggedInUserId" placeholder="Logged-in User ID" value={formData.loggedInUserId} onChange={handleChange} />
-      <input type="text" name="paidBy" placeholder="Paid By" value={formData.paidBy} onChange={handleChange} />
-      <input type="text" name="paidTo" placeholder="Paid To" value={formData.paidTo} onChange={handleChange} />
-      <input type="text" name="incomeExpenseType" placeholder="Income/Expense Type" value={formData.incomeExpenseType} onChange={handleChange} />
-      <button onClick={handleUpdate}>Update</button>
-      {message && <p className="message">{message}</p>}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        height: "100vh",
+        textAlign: "center",
+        paddingTop: "20px",
+      }}
+    >
+      <h2 style={{ marginBottom: "20px" }}>Update Payment Record</h2>
+      {["id", "ledgerHeadId", "loggedInUserId", "paidBy", "paidTo", "incomeExpenseType"].map((field) => (
+        <input
+          key={field}
+          type="text"
+          name={field}
+          placeholder={field.replace(/([A-Z])/g, " $1").trim()}
+          value={formData[field]}
+          onChange={handleChange}
+          style={{
+            padding: "10px",
+            width: "250px",
+            marginBottom: "10px",
+            border: "2px solid #00b4c4",
+            borderRadius: "5px",
+            fontSize: "16px",
+          }}
+        />
+      ))}
+      <button
+        onClick={handleUpdate}
+        style={{
+          padding: "10px 20px",
+          backgroundColor: "#4CAF50",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "16px",
+        }}
+        onMouseOver={(e) => (e.target.style.backgroundColor = "#45a049")}
+        onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
+      >
+        Update
+      </button>
+      {message && <p style={{ marginTop: "10px", fontWeight: "bold", color: "#333" }}>{message}</p>}
     </div>
   );
 }

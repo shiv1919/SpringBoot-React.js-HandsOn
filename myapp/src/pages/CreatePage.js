@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./CreatePage.css"; 
 
 function CreatePage() {
   const [formData, setFormData] = useState({
@@ -29,7 +28,13 @@ function CreatePage() {
 
       if (response.ok) {
         setMessage("Record created successfully!");
-        setFormData({ ledgerHeadId: "", loggedInUserId: "", paidBy: "", paidTo: "", incomeExpenseType: "" });
+        setFormData({
+          ledgerHeadId: "",
+          loggedInUserId: "",
+          paidBy: "",
+          paidTo: "",
+          incomeExpenseType: "",
+        });
       } else {
         setMessage("Failed to create record.");
       }
@@ -40,15 +45,59 @@ function CreatePage() {
   };
 
   return (
-    <div className="create-container">
-      <h2>Create Income/Expense Record</h2>
-      <input type="text" name="ledgerHeadId" placeholder="Ledger Head ID" value={formData.ledgerHeadId} onChange={handleChange} />
-      <input type="text" name="loggedInUserId" placeholder="Logged-in User ID" value={formData.loggedInUserId} onChange={handleChange} />
-      <input type="text" name="paidBy" placeholder="Paid By" value={formData.paidBy} onChange={handleChange} />
-      <input type="text" name="paidTo" placeholder="Paid To" value={formData.paidTo} onChange={handleChange} />
-      <input type="text" name="incomeExpenseType" placeholder="Income/Expense Type" value={formData.incomeExpenseType} onChange={handleChange} />
-      <button onClick={handleCreate}>Create</button>
-      {message && <p className="message">{message}</p>}
+    <div
+      style={{
+        width: "350px",
+        margin: "50px auto",
+        padding: "20px",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.1)",
+        textAlign: "center",
+        backgroundColor:"white",
+      }}
+    >
+      <h2 style={{ marginBottom: "15px", fontSize: "20px",color:"black" }}>
+        Create Income/Expense Record
+      </h2>
+      {Object.keys(formData).map((key) => (
+        <input
+          key={key}
+          type="text"
+          name={key}
+          placeholder={key.replace(/([A-Z])/g, " $1").trim()}
+          value={formData[key]}
+          onChange={handleChange}
+          style={{
+            width: "90%",
+            padding: "10px",
+            margin: "8px 0",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+          }}
+        />
+      ))}
+      <button
+        onClick={handleCreate}
+        style={{
+          width: "100%",
+          padding: "10px",
+          backgroundColor: "#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+        onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
+        onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
+      >
+        Create
+      </button>
+      {message && (
+        <p style={{ marginTop: "10px", color: "green", fontWeight: "bold" }}>
+          {message}
+        </p>
+      )}
     </div>
   );
 }
