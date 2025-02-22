@@ -17,9 +17,10 @@ interface CreateRecordDialogProps {
   handleClose: () => void;
   setMessage: (message: string) => void;
   setOpen: (open: boolean) => void;
+  fetchAllRecords: () => void; 
 }
 
-const CreateRecordDialog: React.FC<CreateRecordDialogProps> = ({ open, handleClose, setMessage, setOpen }) => {
+const CreateRecordDialog: React.FC<CreateRecordDialogProps> = ({ open, handleClose, setMessage, setOpen, fetchAllRecords }) => {
   const [formData, setFormData] = useState<FormDatacreate>({
     ledgerHeadId: "",
     loggedInUserId: "",
@@ -58,6 +59,7 @@ const CreateRecordDialog: React.FC<CreateRecordDialogProps> = ({ open, handleClo
       });
 
       setOpen(false); 
+      fetchAllRecords(); 
     } catch (error: any) {
       if (error.response) {
         setMessage(error.response.data?.message || "Failed to create record.");

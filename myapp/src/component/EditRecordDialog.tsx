@@ -23,13 +23,16 @@ interface EditRecordDialogProps {
   open: boolean;
   onClose: () => void;
   onUpdate: (formData: FormData) => void;
+  fetchAllRecords: () => void; 
   initialData: FormData | null;
 }
+
 
 const EditRecordDialog: React.FC<EditRecordDialogProps> = ({
   open,
   onClose,
   onUpdate,
+  fetchAllRecords,
   initialData,
 }) => {
   const [formData, setFormData] = useState<FormData>({
@@ -82,6 +85,7 @@ const EditRecordDialog: React.FC<EditRecordDialogProps> = ({
       setMessage("Record updated successfully!");
       onUpdate(formData);
       onClose();
+      fetchAllRecords(); 
     } catch (error: any) {
       if (error.response) {
         setMessage(error.response.data?.message || "Failed to update record.");

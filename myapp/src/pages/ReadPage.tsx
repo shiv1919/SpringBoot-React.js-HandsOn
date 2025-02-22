@@ -97,6 +97,8 @@ const ReadAllPage: React.FC = () => {
     fetchAllRecords();
   }, []);
 
+  
+
   const fetchAllRecords = async () => {
     setLoading(true);
     setError("");
@@ -168,7 +170,7 @@ const ReadAllPage: React.FC = () => {
             Add
           </Button>
         </Box>
-        <CreateRecordDialog open={open} handleClose={() => setOpen(false)} setMessage={setMessage} setOpen={setOpen} />
+        <CreateRecordDialog open={open} handleClose={() => setOpen(false)} setMessage={setMessage} setOpen={setOpen} fetchAllRecords={fetchAllRecords}   />
         {loading && <CircularProgress sx={{ display: "block", mx: "auto", my: 2 }} />}
         {error && <Typography color="error">{error}</Typography>}
         {records.length > 0 && (
@@ -248,6 +250,7 @@ const ReadAllPage: React.FC = () => {
             }
             : null
           }
+          fetchAllRecords={fetchAllRecords}  
         />
       </Paper>
     </Container>
